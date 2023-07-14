@@ -5,35 +5,49 @@ default rel
 
 global stencil_SIMD_ASM
 stencil_SIMD_ASM:
-	shr RCX, 3	;ymm reg = 256bit/32bit (int) = 8 elem = 2^3
+	shr RCX, 2	;ymm reg = 256bit/64bit (long long) = 4 elem = 2^2
 
-	;init RCX
 	xor RBX, RBX
 
 	block:
 		;initialization
 		vxorps YMM1, YMM1
 
-		push RCX
-		mov RCX, 7
-		sum:
-			;add (packed) on each output elem
-			vmovdqu YMM0, [R8]
-			vaddps YMM1, YMM1, YMM0
+		push R8
 
-			;move input window forward
-			add R8, 4
+		; -- main sum operation --
+		;unroll add 7x
+		vmovdqu YMM0, [R8]
+		vaddpd YMM1, YMM1, YMM0
 
-		LOOP sum
+		vmovdqu YMM0, [R8+8]
+		vaddpd YMM1, YMM1, YMM0
+
+		vmovdqu YMM0, [R8+16]
+		vaddpd YMM1, YMM1, YMM0
+
+		vmovdqu YMM0, [R8+24]
+		vaddpd YMM1, YMM1, YMM0
+
+		vmovdqu YMM0, [R8+32]
+		vaddpd YMM1, YMM1, YMM0
+
+		vmovdqu YMM0, [R8+40]
+		vaddpd YMM1, YMM1, YMM0
+
+		vmovdqu YMM0, [R8+48]
+		vaddpd YMM1, YMM1, YMM0
 
 		;copy result to output
 		vmovdqu [RDX], YMM1
 
-		;move to next set of outputs
-		add R8, 4
-		add RDX, 32
+		;adjust input window
+		pop R8
+		ADD R8, 32
 
-	pop RCX
+		;move to next set of outputs
+		add RDX, 32	;move to next set of elements
+
 	LOOP block
 
 	ret

@@ -9,29 +9,40 @@ stencil_ASM:
 
 	block:
 		push R8			;input pointer
-		push RCX		;counter (n)
 
-	
-		xor RAX, RAX	;reset accumulator
+		xor RAX, RAX	;clear accumulator
 
-		;main sum operation
-		mov RCX, 7	;perform sum on 7 inputs
-		sum:
-	
-			mov R9, [R8]		;get input
-			add RAX, R9
+		; -- main sum operation --
+		;unroll add 7x
+		mov R9, [R8]		;get input
+		add RAX, R9
 
-			add R8, 4			;move to next input
-		LOOP sum
+		mov R9, [R8+8]		;get input
+		add RAX, R9
+
+		mov R9, [R8+16]		;get input
+		add RAX, R9
+
+		mov R9, [R8+24]		;get input
+		add RAX, R9
+
+		mov R9, [R8+32]		;get input
+		add RAX, R9
+
+		mov R9, [R8+40]		;get input
+		add RAX, R9
+
+		mov R9, [R8+48]		;get input
+		add RAX, R9
 		
 		mov [RDX], RAX	;store result in output
 
 		;retrieve stored values
-		pop RCX
 		pop R8
 
-		ADD R8, 4		;shift 1 input forward
-		ADD RDX, 4		;move to next output
+		;move to next element
+		ADD R8, 8		;shift 1 input forward
+		ADD RDX, 8		;move to next output
 
 	LOOP block
 
