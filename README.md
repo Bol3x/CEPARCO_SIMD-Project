@@ -1,8 +1,8 @@
-![image](https://github.com/Bol3x/CEPARCO_SIMD-Project/assets/59347516/70ccd928-f3fc-4624-9fdf-3ebccc025ded)# CEPARCO_SIMD-Project
+# CEPARCO_SIMD-Project
 Assembly to C program that calculates a 64-bit integer 1D stencil of width 7
 
 ## Sample Image of Results (C, ASM, SIMD-AVX2) Output of the program at 2^20 elements.
-![image](https://github.com/Bol3x/CEPARCO_SIMD-Project/assets/59347516/a54e4f82-c2f5-4200-99b1-d015fc29ba87)
+![image](https://github.com/Bol3x/CEPARCO_SIMD-Project/assets/59347516/c28d46ef-19aa-4b57-9c15-853addbbeb74)
 
 Given that the specifications require a 7-length stencil window, the programs were written accordingly. 
 Although the code could be modified to vary its size, its performance would also be affected to accommodate for the added loop controls. 
