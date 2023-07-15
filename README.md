@@ -21,6 +21,11 @@ Using the output from the C function as basis, all 3 variations resulted in no e
 ---
 The following data were taken from my personal computer, with a `Ryzen 5 7600x` CPU and `16GB 5600MT/s DDR5` RAM.
 
+It is worth noting that these results were tested in debug mode, as although release mode highly optimizes the C function, it also causes issues when timing the SIMD program, resulting in supposed incorrect measurements.
+The resulting optimized C function when inspected in the disassembly is near identical to the implemented ASM program, with slightly lower measured time, likely due to less overhead in switching from C to an ASM function, as well as less-than-ideal implementation compared to the compiler's precise jumps and memory addressing.
+
+I will be comparing the debug mode as to see how the unoptimized C version compares to the optimized assembly functions due to this timing limitation.
+
 | **    Array Size   ** | **    C Function   ** | **    ASM Call   ** | **    Speedup   ** |
 |-----------------------|-----------------------|---------------------|--------------------|
 |     2^20              |     2466.67ms         |     766.67ms        |     3.22x          |
