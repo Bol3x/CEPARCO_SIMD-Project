@@ -1,10 +1,12 @@
 # CEPARCO_SIMD-Project
 Assembly to C program that calculates a 64-bit integer 1D stencil of width 7
+
+
 Project Specifications:
 ![Screenshot 2023-07-01 140438](https://github.com/Bol3x/CEPARCO_SIMD-Project/assets/59347516/5fe9b7a8-ad38-4f46-8f79-1c7049f02d95)
 
 
-## Sample Image of Results (C, ASM, SIMD-AVX2) Output of the program at 2^20 elements.
+### Sample output of program (C, ASM, SIMD-AVX2) Output of the program at 2^20 elements.
 ![image](https://github.com/Bol3x/CEPARCO_SIMD-Project/assets/59347516/c28d46ef-19aa-4b57-9c15-853addbbeb74)
 
 Given that the specifications require a 7-length stencil window, the programs were written accordingly. 
@@ -54,3 +56,17 @@ The C program used in the notebook is identical to the one used in the local tes
 
 With only using a simple CUDA program, the speedup vs the C function is around 5x, with the times including the overhead of data transer from device-to-host and vice versa. 
 Although faster than the SIMD implementation, it may be preferable to still use the former as the CUDA implementation is hardware-dependent on the system having a dedicated Nvidia GPU.
+
+### Sample output of program at 2^20 elements
+
+C execution
+
+![image](https://github.com/Bol3x/CEPARCO_SIMD-Project/assets/59347516/174d9d58-9846-43e7-bc10-71c1c9e3aeac)
+
+
+CUDA NVprof execution profile
+
+![image](https://github.com/Bol3x/CEPARCO_SIMD-Project/assets/59347516/b6740c3b-c0d6-4a53-a4ee-4fb311b963c2)
+
+
+
