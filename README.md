@@ -1,6 +1,6 @@
 # CEPARCO_SIMD-Project
 Assembly to C program that calculates a 64-bit integer 1D stencil of width 7
-
+Created by Jan Carlo Roleda - S11
 
 Project Specifications:
 ![Screenshot 2023-07-01 140438](https://github.com/Bol3x/CEPARCO_SIMD-Project/assets/59347516/5fe9b7a8-ad38-4f46-8f79-1c7049f02d95)
