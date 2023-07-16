@@ -25,7 +25,11 @@ extern void stencil_ASM(int n, long long* out, long long* in);
 
 int main() {
     //note: 2^30 crashes (overloaded memory)
-    const unsigned int VEC_SIZE = 1 << 28;
+    
+    unsigned int VEC_SIZE;
+    printf("Input vector size: ");
+    scanf_s("%u", &VEC_SIZE);
+
     const unsigned long long ARRAY_BYTES = VEC_SIZE * sizeof(long long);
     unsigned long long err_count = 0;
 
@@ -88,6 +92,7 @@ int main() {
         start = clock();
         stencil_ASM(VEC_SIZE, out_asm, in);
         end = clock();
+
         sum += ((double)(end - start)) * 1e6 / CLOCKS_PER_SEC; // microseconds
     }
     double ave_time_ASM = sum / 30.0;
@@ -126,6 +131,7 @@ int main() {
         start = clock();
         stencil_SIMD_ASM(VEC_SIZE, out_simd, in);
         end = clock();
+
         sum += ((double)(end - start)) * 1e6 / CLOCKS_PER_SEC; // microseconds
     }
     double ave_time_SIMD = sum / 30.0;
