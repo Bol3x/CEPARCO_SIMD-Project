@@ -65,7 +65,8 @@ C execution
 
 CUDA NVprof execution profile
 
-![image](https://github.com/Bol3x/CEPARCO_SIMD-Project/assets/59347516/b6740c3b-c0d6-4a53-a4ee-4fb311b963c2)
+![image](https://github.com/Bol3x/CEPARCO_SIMD-Project/assets/59347516/e58f2903-a60f-4c1b-87d2-a2449afd39f1)
+
 
 
 
