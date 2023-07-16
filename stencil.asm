@@ -16,7 +16,7 @@ stencil_ASM:
 
 		; -- main sum operation --
 		;unroll add 7x
-		mov RAX, [R8]
+		mov RAX, qword [R8]
 		add RAX, qword [R8+8]
 		add RAX, qword [R8+16]
 		add RAX, qword [R8+24]

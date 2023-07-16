@@ -26,7 +26,8 @@ extern void stencil_ASM(int n, long long* out, long long* in);
 int main() {
     //note: 2^30 crashes (overloaded memory)
     
-    unsigned int VEC_SIZE;
+    //get length n
+    unsigned int VEC_SIZE; 
     printf("Input vector size: ");
     scanf_s("%u", &VEC_SIZE);
 

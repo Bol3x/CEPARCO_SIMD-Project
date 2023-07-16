@@ -9,8 +9,7 @@ default rel
 global stencil_SIMD_ASM
 stencil_SIMD_ASM:
 	shr RCX, 2	;ymm reg = 256bit/64bit (long long) = 4 elem = 2^2
-
-	xor RBX, RBX
+	;leftover elems can be ignored anyway (n-6) so no need to consider 
 
 	block:
 		;initialization
