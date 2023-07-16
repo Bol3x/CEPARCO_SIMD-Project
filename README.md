@@ -53,8 +53,8 @@ The C program used in the notebook is identical to the one used in the local tes
 |     2^24              |     134678.7ms        |     22926.87ms    |     5.87x          |
 |     2^29              |     3478581.97ms      |     716796.6ms    |     4.85x          |
 
-With only using a simple CUDA program, the speedup vs the C function is around 5x, with the times including the overhead of data transer from device-to-host and vice versa. 
-Although faster than the SIMD implementation, it may be preferable to still use the former as the CUDA implementation is hardware-dependent on the system having a dedicated Nvidia GPU.
+With only using a simple CUDA program, the speedup vs the C function is around 5x, with the recorded times including the overhead of data transer from device-to-host and vice versa. 
+Although faster than the SIMD implementation, it may be preferable to still use the former as the CUDA implementation is hardware-dependent on the system having a dedicated Nvidia GPU, whereas AVX2 instructions are widely available in modern systems. If that is also not availalble, the 64-bit assembly program will still work just as well at larger array sizes.
 
 ### Sample output of program at 2^20 elements
 
